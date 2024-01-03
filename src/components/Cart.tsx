@@ -1,23 +1,26 @@
 import {
+  HiMinus,
+  HiOutlinePlus,
+  HiOutlineShoppingCart,
+  HiOutlineTrash,
+} from "react-icons/hi";
+import { useAppSelector } from "../redux/hook";
+import { IProduct } from "../types/globalTypes";
+import { Button } from "./ui/button";
+import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from './ui/sheet';
-import {
-  HiMinus,
-  HiOutlinePlus,
-  HiOutlineShoppingCart,
-  HiOutlineTrash,
-} from 'react-icons/hi';
-import { Button } from './ui/button';
-import { IProduct } from '@/types/globalTypes';
+} from "./ui/sheet";
 
 export default function Cart() {
   //! Dummy data
 
-  const products: IProduct[] = [];
+  const { cart } = useAppSelector((state) => state);
+  console.log(cart);
+  const products: IProduct[] = cart.products;
   const total = 0;
 
   //! **
@@ -47,7 +50,7 @@ export default function Cart() {
                 <h1 className="text-2xl self-center">{product?.name}</h1>
                 <p>Quantity: {product.quantity}</p>
                 <p className="text-xl">
-                  Total Price: {(product.price * product.quantity!).toFixed(2)}{' '}
+                  Total Price: {(product.price * product.quantity!).toFixed(2)}{" "}
                   $
                 </p>
               </div>
