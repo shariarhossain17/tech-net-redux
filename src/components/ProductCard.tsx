@@ -1,7 +1,7 @@
-import { IProduct } from '@/types/globalTypes';
-import { toast } from './ui/use-toast';
-import { Button } from './ui/button';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { IProduct } from "../types/globalTypes";
+import { Button } from "./ui/button";
+import { toast } from "./ui/use-toast";
 
 interface IProps {
   product: IProduct;
@@ -10,7 +10,7 @@ interface IProps {
 export default function ProductCard({ product }: IProps) {
   const handleAddProduct = (product: IProduct) => {
     toast({
-      description: 'Product Added',
+      description: "Product Added",
     });
   };
   return (
@@ -22,7 +22,7 @@ export default function ProductCard({ product }: IProps) {
         </Link>
         <p>Rating: {product?.rating}</p>
         <p className="text-sm">
-          Availability: {product?.status ? 'In stock' : 'Out of stock'}
+          Availability: {product?.status ? "In stock" : "Out of stock"}
         </p>
         <p className="text-sm">Price: {product?.price}</p>
         <Button variant="default" onClick={() => handleAddProduct(product)}>

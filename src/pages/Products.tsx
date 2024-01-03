@@ -1,15 +1,15 @@
-import ProductCard from '@/components/ProductCard';
-import { Label } from '@/components/ui/label';
-import { Slider } from '@/components/ui/slider';
-import { Switch } from '@/components/ui/switch';
-import { useToast } from '@/components/ui/use-toast';
-import { IProduct } from '@/types/globalTypes';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import ProductCard from "../components/ProductCard";
+import { Label } from "../components/ui/label";
+import { Slider } from "../components/ui/slider";
+import { Switch } from "../components/ui/switch";
+import { useToast } from "../components/ui/use-toast";
+import { IProduct } from "../types/globalTypes";
 
 export default function Products() {
   const [data, setData] = useState<IProduct[]>([]);
   useEffect(() => {
-    fetch('./data.json')
+    fetch("./data.json")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
