@@ -1,8 +1,8 @@
-import ProductReview from '@/components/ProductReview';
-import { Button } from '@/components/ui/button';
-import { IProduct } from '@/types/globalTypes';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Button } from "../components//ui/button";
+import ProductReview from "../components/ProductReview";
+import { IProduct } from "../types/globalTypes";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -10,7 +10,7 @@ export default function ProductDetails() {
   //! Temporary code, should be replaced with redux
   const [data, setData] = useState<IProduct[]>([]);
   useEffect(() => {
-    fetch('../../public/data.json')
+    fetch("../../public/data.json")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
