@@ -3,8 +3,10 @@ import App from "../App";
 import Checkout from "../pages/Checkout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import NotFound from "../pages/NotFound";
 import ProductDetails from "../pages/ProductDetails";
 import Products from "../pages/Products";
+import Signup from "../pages/Signup";
 
 const routes = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const routes = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
