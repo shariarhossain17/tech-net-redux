@@ -16,14 +16,9 @@ import {
 } from "./ui/sheet";
 
 export default function Cart() {
-  //! Dummy data
-
-  const { cart } = useAppSelector((state) => state);
-  console.log(cart);
+  const cart = useAppSelector((state) => state.cart);
   const products: IProduct[] = cart.products;
   const total = 0;
-
-  //! **
 
   return (
     <Sheet>
@@ -32,7 +27,7 @@ export default function Cart() {
           <HiOutlineShoppingCart size="25" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="overflow-auto relative">
+      <SheetContent className="overflow-auto relative bg-yellow-50">
         <SheetHeader>
           <SheetTitle>Cart</SheetTitle>
           <h1>Total: {total.toFixed(2)}</h1>
