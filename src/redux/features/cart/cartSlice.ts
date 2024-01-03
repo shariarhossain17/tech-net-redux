@@ -21,10 +21,10 @@ const cartSlice = createSlice({
         (product) => product._id === action.payload._id
       );
 
-      console.log(isExist);
-
       if (isExist) {
-        isExist.quantity = isExist.quantity! + 1;
+        console.log(isExist.quantity);
+
+        isExist.quantity = Number(isExist.quantity! + 1);
       } else {
         state.products.push({ ...action.payload, quantity: 1 });
       }
