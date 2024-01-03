@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Checkout from "../pages/Checkout";
 import Home from "../pages/Home";
+import Login from "../pages/Login";
 import ProductDetails from "../pages/ProductDetails";
 import Products from "../pages/Products";
 
@@ -27,6 +28,10 @@ const routes = createBrowserRouter([
         element: <Checkout />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
