@@ -4,7 +4,12 @@ import {
   HiOutlineShoppingCart,
   HiOutlineTrash,
 } from "react-icons/hi";
-import { useAppSelector } from "../redux/hook";
+import {
+  addToCart,
+  removeFromCart,
+  removeOneFromCart,
+} from "../redux/features/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { IProduct } from "../types/globalTypes";
 import { Button } from "./ui/button";
 import {
@@ -16,9 +21,9 @@ import {
 } from "./ui/sheet";
 
 export default function Cart() {
-  const cart = useAppSelector((state) => state.cart);
-  const products: IProduct[] = cart.products;
-  const total = 0;
+  const { products: cart, total } = useAppSelector((state) => state.cart);
+  const products: IProduct[] = cart;
+  const dispatch = useAppDispatch();
 
   return (
     <Sheet>
@@ -50,15 +55,16 @@ export default function Cart() {
                 </p>
               </div>
               <div className="border-l pl-5 flex flex-col justify-between">
-                <Button>
+                <Button onClick={() => dispatch(addToCart(product))}>
                   <HiOutlinePlus size="20" />
                 </Button>
-                <Button>
+                <Button onClick={() => dispatch(removeOneFromCart(product))}>
                   <HiMinus size="20" />
                 </Button>
                 <Button
                   variant="destructive"
                   className="bg-red-500 hover:bg-red-400"
+                  onClick={() => dispatch(removeFromCart(product))}
                 >
                   <HiOutlineTrash size="20" />
                 </Button>
