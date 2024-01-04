@@ -21,10 +21,9 @@ import {
 } from "./ui/sheet";
 
 export default function Cart() {
-  const cart = useAppSelector((state) => state.cart);
-  const products: IProduct[] = cart.products;
+  const { products: cart, total } = useAppSelector((state) => state.cart);
+  const products: IProduct[] = cart;
   const dispatch = useAppDispatch();
-  const total = 0;
 
   return (
     <Sheet>
