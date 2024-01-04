@@ -11,14 +11,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { IProduct } from "../types/globalTypes";
 
 export default function Products() {
-  // const [data, setData] = useState<IProduct[]>([]);
-  // useEffect(() => {
-  //   fetch("./data.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  // }, []);
-
-  const { data, isLoading, isError } = useGetProductsQuery(undefined);
+  const { data, isLoading } = useGetProductsQuery(undefined);
 
   const dispatch = useAppDispatch();
   const { status, priceRange } = useAppSelector((state) => state.product);
