@@ -4,7 +4,8 @@ import {
   HiOutlineShoppingCart,
   HiOutlineTrash,
 } from "react-icons/hi";
-import { useAppSelector } from "../redux/hook";
+import { removeFromCart } from "../redux/features/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { IProduct } from "../types/globalTypes";
 import { Button } from "./ui/button";
 import {
@@ -18,6 +19,7 @@ import {
 export default function Cart() {
   const cart = useAppSelector((state) => state.cart);
   const products: IProduct[] = cart.products;
+  const dispatch = useAppDispatch();
   const total = 0;
 
   return (
@@ -59,6 +61,7 @@ export default function Cart() {
                 <Button
                   variant="destructive"
                   className="bg-red-500 hover:bg-red-400"
+                  onClick={() => dispatch(removeFromCart(product))}
                 >
                   <HiOutlineTrash size="20" />
                 </Button>
