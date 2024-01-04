@@ -1,21 +1,14 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button } from "../components//ui/button";
 import ProductReview from "../components/ProductReview";
-import { IProduct } from "../types/globalTypes";
+import { Button } from "../components/ui/button";
+import { useGetSingleProductQuery } from "../redux/features/api/apiSlice";
 
 export default function ProductDetails() {
   const { id } = useParams();
 
   //! Temporary code, should be replaced with redux
-  const [data, setData] = useState<IProduct[]>([]);
-  useEffect(() => {
-    fetch("../../public/data.json")
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
 
-  const product = data?.find((item) => item._id === Number(id));
+  const { data: product } = useGetSingleProductQuery(id);
 
   //! Temporary code ends here
 
@@ -29,7 +22,7 @@ export default function ProductDetails() {
           <h1 className="text-3xl font-semibold">{product?.name}</h1>
           <p className="text-xl">Rating: {product?.rating}</p>
           <ul className="space-y-1 text-lg">
-            {product?.features?.map((feature) => (
+            {product?.features?.map((feature: string) => (
               <li key={feature}>{feature}</li>
             ))}
           </ul>
