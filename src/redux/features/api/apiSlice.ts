@@ -29,4 +29,5 @@ export const {
   useGetProductsQuery,
   useGetSingleProductQuery,
   useCommentPostMutation,
+  useGetCommentQuery,
 } = api;

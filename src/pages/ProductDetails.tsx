@@ -25,7 +25,7 @@ export default function ProductDetails() {
           <Button>Add to cart</Button>
         </div>
       </div>
-      <ProductReview id={product?._id} />
+      <ProductReview id={id} />
     </>
   );
 }

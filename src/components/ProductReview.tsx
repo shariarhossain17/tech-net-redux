@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { FiSend } from "react-icons/fi";
-import { useCommentPostMutation } from "../redux/features/api/apiSlice";
+import {
+  useCommentPostMutation,
+  useGetCommentQuery,
+} from "../redux/features/api/apiSlice";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
@@ -13,15 +16,15 @@ const dummyComments = [
 ];
 
 interface IProps {
-  id: string;
+  id: string | undefined;
 }
 
 export default function ProductReview({ id }: IProps) {
   const [inputValue, setInputValue] = useState<string>("");
 
-  const [postComment, options] = useCommentPostMutation();
+  const [postComment] = useCommentPostMutation();
 
-  console.log(options);
+  const { data } = useGetCommentQuery(id);
 
   const handleComment = () => {
     const option = {
@@ -42,13 +45,13 @@ export default function ProductReview({ id }: IProps) {
         />
         <Button
           onClick={() => handleComment()}
-          className="rounded-full h-10 w-10 p-2 text-[25px]"
+          className="rounded-full h-10 w-10 p-2 text-[25px] cursor-pointer"
         >
-          <FiSend />
+          <FiSend className="" />
         </Button>
       </div>
       <div className="mt-10">
-        {dummyComments.map((comment, index) => (
+        {data?.comments?.map((comment: string, index: number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
