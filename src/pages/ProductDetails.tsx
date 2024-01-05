@@ -6,11 +6,7 @@ import { useGetSingleProductQuery } from "../redux/features/api/apiSlice";
 export default function ProductDetails() {
   const { id } = useParams();
 
-  //! Temporary code, should be replaced with redux
-
   const { data: product } = useGetSingleProductQuery(id);
-
-  //! Temporary code ends here
 
   return (
     <>
