@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { FiSend } from "react-icons/fi";
+
 import {
   useCommentPostMutation,
   useGetCommentQuery,
-} from "../redux/features/api/apiSlice";
+} from "../redux/features/products/productApi";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
